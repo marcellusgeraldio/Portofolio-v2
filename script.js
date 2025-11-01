@@ -335,3 +335,32 @@ function closeModal() {
 document.addEventListener('DOMContentLoaded', function() {
     initCertificateModal();
 });
+
+// Smooth scroll untuk footer links
+document.querySelectorAll('.footer-links a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        
+        if (targetSection) {
+            // Close semua sections dulu
+            contentSections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show target section
+            targetSection.classList.add('active');
+            
+            // Scroll ke section
+            const offset = 80;
+            const elementPosition = targetSection.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
