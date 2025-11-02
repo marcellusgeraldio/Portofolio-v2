@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Glass Ripple
-document.querySelectorAll('.tool-item, .nav-btn, .skill-item, .project-card, .certificate-item, .timeline-content').forEach(tool => {
+document.querySelectorAll('.tool-item, .nav-btn, .skill-item, .project-card, .certificate-item, .timeline-content, .cv-download-btn').forEach(tool => {
     tool.addEventListener('click', function(e) {
         const existingRipples = this.querySelectorAll('.glass-ripple-effect');
         existingRipples.forEach(ripple => ripple.remove());
@@ -339,3 +339,88 @@ document.addEventListener('DOMContentLoaded', function() {
     const savedTheme = localStorage.getItem('selectedTheme') || 'default';
     applyTheme(savedTheme);
 });
+
+// Download CV Function
+function downloadCV() {
+    // Ganti dengan path ke file CV Anda
+    const cvUrl = 'file/CurriculumVitae_MarcellusGeraldioFlorenta.pdf';
+    
+    // Create temporary link element
+    const link = document.createElement('a');
+    link.href = cvUrl;
+    link.download = 'CurriculumVitae_MarcellusGeraldioFlorenta.pdf'; // Nama file saat didownload
+    
+    // Trigger download
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    // Optional: Add download tracking/analytics
+    console.log('CV download triggered');
+    
+    // Optional: Show download confirmation
+    showDownloadConfirmation();
+}
+
+// Download confirmation message
+function showDownloadConfirmation() {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--card-bg);
+        color: var(--light-text);
+        padding: 1rem 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        z-index: 10000;
+        backdrop-filter: blur(10px);
+        border: 1px solid hsl(0, 0%, 100%, 0.3);
+        animation: slideInRight 0.3s ease;
+    `;
+    notification.innerHTML = `
+        <i class="fas fa-check-circle" style="color: #4CAF50; margin-right: 0.5rem;"></i>
+        CV downloaded successfully!
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Remove notification after 3 seconds
+    setTimeout(() => {
+        notification.style.animation = 'slideOutRight 0.3s ease';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 3000);
+}
+
+// Add CSS animations untuk notification
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideInRight {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideOutRight {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);

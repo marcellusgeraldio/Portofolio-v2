@@ -252,6 +252,52 @@ body {
     font-weight: 600;
 }
 
+/* CV Download Section Styles */
+.cv-download-btn {
+    margin-top: 2rem;
+    background: var(--glass-background);
+    color: var(--light-text);
+    border: var(--glass-border);
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 0 8px 1px hsl(0, 0%, 100%, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.cv-download-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.cv-download-btn:hover::before {
+    left: 100%;
+}
+
+.cv-download-btn:hover {
+    transform: translateY(-3px);
+}
+
+.cv-download-btn:active {
+    transform: translateY(-1px);
+}
+
+/* Glass Ripple Effect untuk CV Button */
+.cv-download-btn {
+    position: relative;
+    overflow: hidden;
+}
+
 /* Navigation Buttons dengan Liquid Effect */
 .nav-buttons {
     display: grid;
