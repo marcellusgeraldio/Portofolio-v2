@@ -196,75 +196,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Tambahkan juga di DOMContentLoaded
-document.querySelectorAll('.nav-btn').forEach(button => {
-    button.addEventListener('click', function(e) {
-        // Cek jika sudah ada ripple, hapus dulu
-        const existingRipple = this.querySelector('.ripple');
-        if (existingRipple) {
-            existingRipple.remove();
-        }
-        
-        const ripple = document.createElement('span');
-        ripple.className = 'ripple';
-        const rect = this.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = e.clientX - rect.left - size / 2;
-        const y = e.clientY - rect.top - size / 2;
-        
-        ripple.style.cssText = `
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
-            transform: scale(0);
-            animation: ripple 0.6s linear;
-            width: ${size}px;
-            height: ${size}px;
-            left: ${x}px;
-            top: ${y}px;
-            pointer-events: none;
-        `;
-        
-        this.style.position = 'relative';
-        this.style.overflow = 'hidden';
-        this.appendChild(ripple);
-        
-        setTimeout(() => ripple.remove(), 600);
-    });
-});
-
-// Glass Ripple Effect untuk Navigation Buttons
-document.querySelectorAll('.nav-menu a').forEach(button => {
-    button.addEventListener('click', function(e) {
-        // Hapus ripple sebelumnya jika ada
-        const existingRipples = this.querySelectorAll('.glass-ripple-effect');
-        existingRipples.forEach(ripple => ripple.remove());
-        
-        const ripple = document.createElement('span');
-        const rect = this.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = e.clientX - rect.left - size / 2;
-        const y = e.clientY - rect.top - size / 2;
-        
-        ripple.className = 'glass-ripple-effect';
-        ripple.style.width = size + 'px';
-        ripple.style.height = size + 'px';
-        ripple.style.left = x + 'px';
-        ripple.style.top = y + 'px';
-        
-        this.appendChild(ripple);
-        
-        // Auto remove setelah animation selesai
-        setTimeout(() => {
-            if (ripple.parentNode === this) {
-                ripple.remove();
-            }
-        }, 800);
-    });
-});
-
-// Glass Ripple untuk Tool Items
-document.querySelectorAll('.tool-item').forEach(tool => {
+// Glass Ripple
+document.querySelectorAll('.tool-item, .nav-btn, .skill-item, .project-card, .certificate-item, .timeline-content').forEach(tool => {
     tool.addEventListener('click', function(e) {
         const existingRipples = this.querySelectorAll('.glass-ripple-effect');
         existingRipples.forEach(ripple => ripple.remove());
@@ -363,4 +296,46 @@ document.querySelectorAll('.footer-links a').forEach(link => {
             });
         }
     });
+});
+
+// Theme Switcher Functionality
+const themes = ['default', 'dark', 'summer', 'autumn', 'spring', 'winter'];
+let currentThemeIndex = 0;
+
+function switchTheme() {
+    currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+    const theme = themes[currentThemeIndex];
+    
+    // Remove existing theme class
+    document.body.classList.remove('theme-default', 'theme-dark', 'theme-summer', 'theme-autumn', 'theme-spring', 'theme-winter');
+    
+    // Add new theme class
+    document.body.classList.add(`theme-${theme}`);
+    
+    // Update theme in localStorage
+    localStorage.setItem('selectedTheme', theme);
+}
+
+function applyTheme(theme) {
+    document.body.classList.remove('theme-default', 'theme-dark', 'theme-summer', 'theme-autumn', 'theme-spring', 'theme-winter');
+    document.body.classList.add(`theme-${theme}`);
+    currentThemeIndex = themes.indexOf(theme);
+}
+
+// Event listeners untuk theme buttons
+document.getElementById('themeBtn')?.addEventListener('click', switchTheme);
+document.getElementById('themeSidebarBtn')?.addEventListener('click', function() {
+    switchTheme();
+    // Close sidebar setelah ganti theme di mobile
+    if (window.innerWidth < 992) {
+        sidebar.classList.remove('active');
+        sidebarOverlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+});
+
+// Load saved theme dari localStorage
+document.addEventListener('DOMContentLoaded', function() {
+    const savedTheme = localStorage.getItem('selectedTheme') || 'default';
+    applyTheme(savedTheme);
 });

@@ -1,3 +1,4 @@
+
 /* Reset & Base Styles */
 * {
     margin: 0;
@@ -15,12 +16,13 @@
     --light-text: #191919;
     --background: linear-gradient(135deg, #ecececf7 0%, #bdbdbd 100%);
     --card-bg: rgba(254, 254, 254, 0.927);
-    --shadow: inset 0 0 8px 1px hsl(0, 0%, 100%, 0.3);
-    --glass-border: inset 0 0 8px 1px hsl(0, 0%, 100%, 0.3);
+    --shadow: inset 0 0 8px 1px  hsl(0, 0%, 100%, 0.3);
+    --glass-border: inset 0 0 8px 1px  hsl(0, 0%, 100%, 0.3);
+    --glass-background: hsl(0, 0%, 100%, 0.2);
 }
 
 body {
-    background: var(--background);
+    background:var(--background);
     color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
@@ -38,7 +40,7 @@ body {
 
 /* Top Navigation */
 .top-nav {
-    background: hsl(0, 0%, 100%, 0.2);
+    background: var(--glass-background);
     backdrop-filter: blur(3.5px);
     -webkit-backdrop-filter: blur(2px);
     border-bottom: 1px solid hsl(0, 0%, 100%, 0.3);
@@ -46,12 +48,12 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    border: 2px hsl(0, 0%, 100%, 0.3);
+    border: var(--glass-border);
     box-shadow: inset 0 0 8px 1px hsl(0, 0%, 100%, 0.3);
 }
 
 .nav-container {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -69,7 +71,36 @@ body {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 1.5rem;
+    margin-left: 3rem;
+}
+
+/* Theme Switcher Button */
+.theme-btn {
+    background: rgba(255, 255, 255, 0.05);
+    text-decoration: none;
+    backdrop-filter: blur(2px);
+    border: 2px hsl(0, 0%, 100%, 0.3);
+    color: var(--light-text);
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 0 8px 1px hsl(0, 0%, 100%, 0.3);
+    font-size: 1rem;
+    gap: 1.5rem;
+}
+
+.theme-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--accent-color);
+}
+
+/* Untuk mobile - theme button di sidebar */
+.nav-links .theme-btn {
+    margin: 1rem 1.5rem 0;
+    text-align: center;
+    width: calc(100% - 3rem);
 }
 
 .nav-menu a {
@@ -87,7 +118,7 @@ body {
 .nav-menu a:hover {
     background: rgba(255, 255, 255, 0.15);
     color: var(--accent-color);
-    transform: translateY(-2px) scale(1.05); /* ← TAMBAH SCALE DI SINI */
+    transform: translateY(-2px) scale(1.5); /* ← TAMBAH SCALE DI SINI */
     box-shadow: var(--shadow);
 }
 
@@ -163,7 +194,7 @@ body {
     justify-content: center;
     width: 50px;
     height: 50px;
-    background: hsl(0, 0%, 100%, 0.2);
+    background: var(--glass-background);
     backdrop-filter: blur(2px);
     color: var(--light-text);
     border-radius: 50%;
@@ -187,7 +218,7 @@ body {
     color: var(--light-text);
     line-height: 1.3;
     text-shadow: 0 2px 4px rgba(154, 154, 154, 0.502);
-    background: linear-gradient(45deg, #969696d7, var(--accent-color));
+    background: linear-gradient(20deg, #acacace2, var(--accent-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -207,7 +238,7 @@ body {
     backdrop-filter: blur(2px);
     transition: all 0.4s ease;
     cursor: default;
-    background: hsl(0, 0%, 100%, 0.2);
+    background: var(--glass-background);
     border: 2px hsl(0, 0%, 100%, 0.3);
     box-shadow: inset 0 0 8px 1px hsl(0, 0%, 100%, 0.3);
 }
@@ -232,7 +263,7 @@ body {
 }
 
 .nav-btn {
-    background: hsl(0, 0%, 100%, 0.2);
+    background: var(--glass-background);
     backdrop-filter: blur(2px);
     border: 2px hsl(0, 0%, 100%, 0.3);
     padding: 1.5rem 1rem;
@@ -264,14 +295,14 @@ body {
 
 .nav-btn:hover {
     transform: translateY(-8px);
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(from var(--glass-background) r g b / 0.4);
     color: var(--accent-color);
 }
 
 /* Content Sections dengan Glass Effect */
 .content-section {
     display: none;
-    background: hsl(0, 0%, 100%, 0.2);
+    background: var(--glass-background);
     backdrop-filter: blur(2px);
     border: 2px hsl(0, 0%, 100%, 0.3);
     padding: 2.5rem;
@@ -357,16 +388,18 @@ body {
 .skill-item {
     margin-bottom: 0.8rem;
     padding: 1rem;
-    background: hsl(0, 0%, 100%, 0.2);
+    background: var(--glass-background);
     backdrop-filter: blur(2px);
     border-radius: 10px;
     transition: all 0.3s ease;
     text-align: center;
+    position: relative;
+    overflow: hidden;
 
 }
 
 .skill-item{
-    color: var(--text-color);
+    color: var(--accent-color);
 }
 
 /* Tools Section */
@@ -411,7 +444,7 @@ body {
 
 .tool-item:hover {
     transform: translateY(-8px) scale(1.05);
-    background: hsl(0, 0%, 100%, 0.2);
+    background: var(--glass-background);
 }
 
 .tool-item i,
@@ -597,7 +630,7 @@ body {
     top: 0;
     width: 100%;
     height: 100%;
-    background: hsl(0, 0%, 100%, 0.2);
+    background: var(--glass-background);
     padding: 20px;
     box-sizing: border-box;
     backdrop-filter: blur(5px);
@@ -770,7 +803,7 @@ body {
 /* Mobile Sidebar */
 .sidebar {
     width: 280px;
-    background: hsl(0, 0%, 100%, 0.2);
+    background: var(--glass-background);
     backdrop-filter: blur(3.5px);
     color: var(--light-text);
     padding: 2rem 1rem;
@@ -863,7 +896,7 @@ body {
 }
 
 .nav-links a:hover {
-    background: hsl(0, 0%, 100%, 0.2);
+    background: var(--glass-background);
     color: var(--accent-color);
     transform: translateX(10px);
 }
@@ -875,7 +908,7 @@ body {
 
 /* Footer Styles */
 .footer {
-    background: hsl(0, 0%, 100%, 0.2);
+    background: var(--glass-background);
     backdrop-filter: blur(2px);
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     margin-top: 4rem;
@@ -1088,7 +1121,7 @@ body {
 }
 
 /* Responsive Sidebar */
-@media (max-width: 991px) {
+@media (max-width: 1287px) {
     .nav-menu {
         display: none;
     }
@@ -1170,7 +1203,7 @@ body {
     }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1288px) {
     .sidebar {
         display: none;
     }
@@ -1298,4 +1331,100 @@ body {
     .certificate-item h3 {
         font-size: 1.1rem;
     }
+}
+
+/* Responsive Theme Button */
+@media (max-width: 1287px) {
+    .theme-btn {
+        display: none;
+    }
+    
+    .nav-links .theme-btn {
+        display: block;
+    }
+}
+
+/* Theme Classes */
+body.theme-default {
+    --primary-color: rgba(41, 41, 41, 0.9);
+    --secondary-color: rgba(37, 37, 37, 0.905);
+    --accent-color: #1f1f1f;
+    --liquid-color: #fdfdfdca;
+    --text-color: #36363689;
+    --light-text: #191919;
+    --background: linear-gradient(135deg, #ecececf7 0%, #bdbdbd 100%);
+    --card-bg: rgba(254, 254, 254, 0.927);
+    --shadow: inset 0 0 8px 1px hsl(0, 0%, 100%, 0.3);
+    --glass-border: inset 0 0 8px 1px hsl(0, 0%, 100%, 0.3);
+    --glass-background: hsl(0, 0%, 100%, 0.2);
+}
+
+body.theme-dark {
+    --primary-color: rgba(250, 250, 250, 0.95);
+    --secondary-color: var(--accent-color);
+    --accent-color: #e8e8e8;
+    --liquid-color: var(--light-text);
+    --text-color: #b8b8b8c1;
+    --light-text: #ffffff;
+    --background: url(images/background/dark.jpg);
+    --card-bg: rgba(31, 41, 55, 0.88);
+    --shadow: inset 0 0 12px 2px rgba(255, 255, 255, 0.08);
+    --glass-border: inset 0 0 8px 1px hsl(0, 0%, 100%, 0.3);
+    --glass-background: hsla(240, 6%, 3%, 0.2);
+}
+
+body.theme-summer {
+    --primary-color: rgba(254, 252, 232, 0.95);
+    --secondary-color: var(--accent-color);
+    --accent-color: #ffca0c;
+    --liquid-color: var(--light-text);
+    --text-color: #854d0ec1;
+    --light-text: #422006;
+    --background: url(images/background/summer.jpg);
+    --card-bg: rgba(254, 243, 199, 0.88);
+    --shadow: inset 0 0 12px 2px rgba(251, 191, 36, 0.08);
+    --glass-border: inset 0 0 8px 1px hsl(45, 95%, 55%, 0.3);
+    --glass-background: hsla(45, 95%, 55%, 0.2);
+}
+
+body.theme-autumn {
+    --primary-color: rgba(255, 255, 255, 0.95);
+    --secondary-color: var(--accent-color);
+    --accent-color: #ffb86c;
+    --liquid-color: var(--light-text);
+    --text-color: #dadadae3;
+    --light-text: #dcdcdc;
+    --background: url(images/background/autumn.jpg);
+    --card-bg: rgba(31, 41, 55, 0.88);
+    --shadow: inset 0 0 12px 2px rgba(255, 255, 255, 0.08);
+    --glass-border: inset 0 0 8px 1px hsl(0, 0%, 100%, 0.3);
+    --glass-background: hsla(23, 97%, 30%, 0.2);
+}
+
+body.theme-spring {
+    --primary-color: rgba(240, 253, 244, 0.95);
+    --secondary-color: var(--accent-color);
+    --accent-color: #09dc53ed;
+    --liquid-color: var(--light-text);
+    --text-color: #7af6a8e7;
+    --light-text: #1ade68;
+    --background: url(images/background/spring.jpg);
+    --card-bg: rgba(220, 252, 231, 0.88);
+    --shadow: inset 0 0 12px 2px rgba(22, 163, 74, 0.08);
+    --glass-border: inset 0 0 8px 1px hsl(142, 76%, 36%, 0.3);
+    --glass-background: hsla(142, 98%, 18%, 0.2);
+}
+
+body.theme-winter {
+    --primary-color: rgba(239, 246, 255, 0.95);
+    --secondary-color: var(--accent-color);
+    --accent-color: #1880ff;
+    --liquid-color: var(--light-text);
+    --text-color: #1e40afc1;
+    --light-text: #1e3a8a;
+    --background: url(images/background/winter.jpg);
+    --card-bg: rgba(219, 234, 254, 0.88);
+    --shadow: inset 0 0 12px 2px rgba(59, 130, 246, 0.08);
+    --glass-border: inset 0 0 8px 1px hsl(217, 91%, 60%, 0.3);
+    --glass-background: hsla(217, 91%, 60%, 0.2);
 }
