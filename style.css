@@ -13,10 +13,10 @@
     --liquid-color: #fdfdfdca;
     --text-color: #36363689;
     --light-text: #191919;
-    --background: linear-gradient(135deg, #e3e3e3f7 0%, #d5d5d5 100%);
+    --background: linear-gradient(135deg, #ecececf7 0%, #bdbdbd 100%);
     --card-bg: rgba(254, 254, 254, 0.927);
-    --shadow: 0 8px 32px rgba(251, 251, 251, 0.823);
-    --glass-border: 1px solid rgb(255, 255, 255);
+    --shadow: inset 0 0 8px 1px hsl(0, 0%, 100%, 0.3);
+    --glass-border: inset 0 0 8px 1px hsl(0, 0%, 100%, 0.3);
 }
 
 body {
@@ -30,22 +30,24 @@ body {
 /* Glass Morphism Effect Base */
 .glass-effect {
     background: var(--card-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: var(--glass-border);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    border: 3px solid var(--glass-border);
     box-shadow: var(--shadow);
 }
 
 /* Top Navigation */
 .top-nav {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: hsl(0, 0%, 100%, 0.2);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(2px);
+    border-bottom: 1px solid hsl(0, 0%, 100%, 0.3);
     padding: 1rem 0;
     position: sticky;
     top: 0;
     z-index: 1000;
+    border: 2px hsl(0, 0%, 100%, 0.3);
+    box-shadow: inset 0 0 8px 1px hsl(0, 0%, 100%, 0.3);
 }
 
 .nav-container {
@@ -77,14 +79,16 @@ body {
     border-radius: 25px;
     transition: all 0.3s ease;
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(2px);
+    border: 2px hsl(0, 0%, 100%, 0.3);
+    box-shadow: inset 0 0 8px 1px hsl(0, 0%, 100%, 0.3);
 }
 
 .nav-menu a:hover {
     background: rgba(255, 255, 255, 0.15);
     color: var(--accent-color);
     transform: translateY(-2px) scale(1.05); /* ← TAMBAH SCALE DI SINI */
-    box-shadow: 0 5px 15px var(--liquid-color);
+    box-shadow: var(--shadow);
 }
 
 .menu-btn {
@@ -97,7 +101,7 @@ body {
     background: rgba(244, 243, 243, 0.1);
     padding: 0.5rem;
     border-radius: 8px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(2px);
     transition: all 0.3s ease; /* ← TAMBAH TRANSITION */
 }
 
@@ -136,14 +140,14 @@ body {
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 2px 32px var(--liquid-color);
+    box-shadow: var(--shadow);
     margin-bottom: 2rem;
     transition: all 0.3s ease;
 }
 
 .profile-img:hover {
     transform: scale(1.05);
-    box-shadow: 0 12px 40px var(--liquid-color);
+    box-shadow: var(--shadow);
 }
 
 .social-links {
@@ -159,13 +163,18 @@ body {
     justify-content: center;
     width: 50px;
     height: 50px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    background: hsl(0, 0%, 100%, 0.2);
+    backdrop-filter: blur(2px);
     color: var(--light-text);
     border-radius: 50%;
     text-decoration: none;
     transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 2px hsl(0, 0%, 100%, 0.3);
+    box-shadow: inset 0 0 8px 1px hsl(0, 0%, 100%, 0.3);
+}
+
+.social-links a:hover {
+    transform: translateY(-lightness);
 }
 
 .social-links a:hover {
@@ -188,19 +197,19 @@ body {
     margin-bottom: 2rem;
 }
 
-/* Versi lebih subtle */
 .about-content p {
     margin-bottom: 1.5rem;
     line-height: 1.8;
     text-align: justify;
     font-size: 1.1rem;
-    background: rgba(255, 255, 255, 0.05);
     padding: 1.5rem;
     border-radius: 15px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(2px);
     transition: all 0.4s ease;
     cursor: default;
+    background: hsl(0, 0%, 100%, 0.2);
+    border: 2px hsl(0, 0%, 100%, 0.3);
+    box-shadow: inset 0 0 8px 1px hsl(0, 0%, 100%, 0.3);
 }
 
 .about-content p:hover {
@@ -223,9 +232,9 @@ body {
 }
 
 .nav-btn {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: hsl(0, 0%, 100%, 0.2);
+    backdrop-filter: blur(2px);
+    border: 2px hsl(0, 0%, 100%, 0.3);
     padding: 1.5rem 1rem;
     border-radius: 15px;
     cursor: pointer;
@@ -235,6 +244,7 @@ body {
     color: var(--light-text);
     position: relative;
     overflow: hidden;
+    box-shadow: inset 0 0 8px 1px hsl(0, 0%, 100%, 0.3);
 }
 
 .nav-btn::before {
@@ -261,13 +271,14 @@ body {
 /* Content Sections dengan Glass Effect */
 .content-section {
     display: none;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: hsl(0, 0%, 100%, 0.2);
+    backdrop-filter: blur(2px);
+    border: 2px hsl(0, 0%, 100%, 0.3);
     padding: 2.5rem;
-    border-radius: 20px;
+    border-radius: 1em;
     margin: 1rem auto;
     max-width: 1200px;
+    box-shadow: inset 0 0 8px 1px hsl(0, 0%, 100%, 0.3);
 }
 
 .content-section.active {
@@ -320,10 +331,10 @@ body {
 
 .skill-category {
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(2px);
     padding: 2rem;
     border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid hsl(0, 0%, 100%, 0.3);
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -346,8 +357,8 @@ body {
 .skill-item {
     margin-bottom: 0.8rem;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
+    background: hsl(0, 0%, 100%, 0.2);
+    backdrop-filter: blur(2px);
     border-radius: 10px;
     transition: all 0.3s ease;
     text-align: center;
@@ -370,10 +381,10 @@ body {
     text-align: center;
     padding: 2rem 1rem;
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(2px);
     border-radius: 15px;
     transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid hsl(0, 0%, 100%, 0.3);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -390,7 +401,7 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, hsl(0, 0%, 100%, 0.3), transparent);
     transition: left 0.5s;
 }
 
@@ -400,7 +411,7 @@ body {
 
 .tool-item:hover {
     transform: translateY(-8px) scale(1.05);
-    background: rgba(255, 255, 255, 0.1);
+    background: hsl(0, 0%, 100%, 0.2);
 }
 
 .tool-item i,
@@ -443,11 +454,11 @@ body {
 
 .project-card {
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(2px);
     border-radius: 15px;
     overflow: hidden;
     transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid hsl(0, 0%, 100%, 0.3);
     position: relative;
 }
 
@@ -458,7 +469,7 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, hsl(0, 0%, 100%, 0.3), transparent);
     transition: left 0.5s;
 }
 
@@ -511,11 +522,11 @@ body {
     align-items: center;
     gap: 2rem;
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(2px);
     padding: 2rem;
     border-radius: 15px;
     transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid hsl(0, 0%, 100%, 0.3);
     position: relative;
     overflow: hidden;
 }
@@ -527,7 +538,7 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, hsl(0, 0%, 100%, 0.3), transparent);
     transition: left 0.5s;
 }
 
@@ -586,9 +597,10 @@ body {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.9);
+    background: hsl(0, 0%, 100%, 0.2);
     padding: 20px;
     box-sizing: border-box;
+    backdrop-filter: blur(5px);
 }
 
 .modal-content {
@@ -599,30 +611,32 @@ body {
     max-height: 80vh;
     object-fit: contain;
     border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 0 8px 1px hsl(0, 0%, 100%, 0.3);
 }
 
 .close {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid hsl(0, 0%, 100%, 0.3);
+    color: var(--liquid-color);
     position: absolute;
     top: 15px;
     right: 35px;
-    color: white;
     font-size: 40px;
     font-weight: bold;
     cursor: pointer;
     z-index: 1003;
-    background: rgba(0, 0, 0, 0.5);
     width: 50px;
     height: 50px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-bottom: 8px;
     transition: all 0.3s ease;
+    box-shadow: inset 0 0 8px 1px hsl(0, 0%, 100%, 0.3);
 }
 
 .close:hover {
-    background: rgba(255, 107, 107, 0.8);
     transform: scale(1.1);
 }
 
@@ -632,7 +646,7 @@ body {
     width: 80%;
     max-width: 700px;
     text-align: center;
-    color: #ccc;
+    color: var(--text-color);
     padding: 15px 0;
     font-size: 1.1rem;
 }
@@ -671,7 +685,7 @@ body {
     width: 20px;
     height: 20px;
     background: var(--accent-color);
-    border: 4px solid rgba(255, 255, 255, 0.1);
+    border: 4px solid hsl(0, 0%, 100%, 0.3);
     border-radius: 50%;
     top: 20px;
     z-index: 1;
@@ -701,11 +715,11 @@ body {
 
 .timeline-content {
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(2px);
     padding: 2rem;
     border-radius: 15px;
     transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid hsl(0, 0%, 100%, 0.3);
     position: relative;
     overflow: hidden;
 }
@@ -717,7 +731,7 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, hsl(0, 0%, 100%, 0.3), transparent);
     transition: left 0.5s;
 }
 
@@ -756,8 +770,8 @@ body {
 /* Mobile Sidebar */
 .sidebar {
     width: 280px;
-    background: rgba(30, 30, 40, 0.95);
-    backdrop-filter: blur(20px);
+    background: hsl(0, 0%, 100%, 0.2);
+    backdrop-filter: blur(3.5px);
     color: var(--light-text);
     padding: 2rem 1rem;
     position: fixed;
@@ -768,7 +782,7 @@ body {
     z-index: 1001;
     top: 0;
     left: 0;
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid hsl(0, 0%, 100%, 0.3);
 }
 
 .sidebar.active {
@@ -782,8 +796,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.354);
+    backdrop-filter: blur(2px);
     z-index: 1000;
 }
 
@@ -803,22 +817,23 @@ body {
 .sidebar-header h2 {
     font-size: 1.5rem;
     color: var(--light-text);
-    background: linear-gradient(45deg, #ffffff, var(--accent-color));
+    background: linear-gradient(45deg, #6a6a6a, var(--accent-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
 .close-btn {
-    background: var(--liquid-color);
-    border: none;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid hsl(0, 0%, 100%, 0.3);
     color: var(--liquid-color);
     font-size: 1.5rem;
     cursor: poiznter;
     padding: 0.5rem;
     border-radius: 8px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(2px);
     transition: all 0.3s ease;
+    box-shadow: inset 0 0 8px 1px hsl(0, 0%, 100%, 0.3);
 }
 
 .close-btn:hover {
@@ -842,12 +857,13 @@ body {
     border-radius: 10px;
     transition: all 0.3s ease;
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(2px);
+    border: 1px solid hsl(0, 0%, 100%, 0.3);
+    box-shadow: inset 0 0 8px 1px hsl(0, 0%, 100%, 0.3);
 }
 
 .nav-links a:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: hsl(0, 0%, 100%, 0.2);
     color: var(--accent-color);
     transform: translateX(10px);
 }
@@ -859,11 +875,13 @@ body {
 
 /* Footer Styles */
 .footer {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
+    background: hsl(0, 0%, 100%, 0.2);
+    backdrop-filter: blur(2px);
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     margin-top: 4rem;
     padding: 3rem 0 1rem;
+    border: 1px hsl(0, 0%, 100%, 0.3);
+    box-shadow: inset 0 0 8px 1px hsl(0, 0%, 100%, 0.3);
 }
 
 .footer-container {
@@ -976,14 +994,15 @@ body {
     justify-content: center;
     width: 50px;
     height: 50px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(2px);
+    border: 2px hsl(0, 0%, 100%, 0.3);
     border-radius: 50%;
     color: var(--light-text);
     text-decoration: none;
     transition: all 0.3s ease;
     font-size: 1.2rem;
+    box-shadow: inset 0 0 8px 1px hsl(0, 0%, 100%, 0.3);
 }
 
 .footer-social a:hover {
@@ -991,7 +1010,7 @@ body {
 }
 
 .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid hsl(0, 0%, 100%, 0.3);
     padding-top: 2rem;
     text-align: center;
 }
@@ -1068,6 +1087,7 @@ body {
     }
 }
 
+/* Responsive Sidebar */
 @media (max-width: 991px) {
     .nav-menu {
         display: none;
@@ -1177,7 +1197,7 @@ body {
     0% {
         transform: scale(0);
         opacity: 0.7;
-        backdrop-filter: blur(15px);
+        backdrop-filter: blur(2px);
     }
     50% {
         backdrop-filter: blur(25px);
@@ -1185,7 +1205,7 @@ body {
     100% {
         transform: scale(4);
         opacity: 0;
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(2px);
     }
 }
 
@@ -1195,10 +1215,10 @@ body {
     background: radial-gradient(circle, 
         rgba(255, 255, 255, 0.4) 0%,
         rgba(255, 255, 255, 0.2) 30%,
-        rgba(255, 255, 255, 0.1) 50%,
+        hsl(0, 0%, 100%, 0.3) 50%,
         transparent 70%
     );
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(2px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     animation: glass-ripple 0.8s ease-out;
     pointer-events: none;
