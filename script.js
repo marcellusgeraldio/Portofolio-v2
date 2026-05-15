@@ -343,7 +343,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Download CV Function
 function downloadCV() {
     // Ganti dengan path ke file CV Anda
-    const cvUrl = 'file/ALT_CurriculumVitae_MarcellusGeraldioFlorenta.pdf';
+    const cvUrl = 'file/ALT_CurriculumVitae_Marcellus Geraldio Florenta.pdf';
     
     // Create temporary link element
     const link = document.createElement('a');
